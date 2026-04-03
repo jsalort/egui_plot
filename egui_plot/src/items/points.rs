@@ -10,6 +10,7 @@ use emath::Pos2;
 use emath::pos2;
 use emath::vec2;
 
+use crate::aesthetics::LineStyle;
 use crate::aesthetics::MarkerShape;
 use crate::axis::PlotTransform;
 use crate::bounds::PlotBounds;
@@ -28,6 +29,9 @@ impl<'a> Points<'a> {
             color: Color32::TRANSPARENT,
             filled: true,
             radius: 1.0,
+            line: false,
+            stroke: Stroke::new(1.5, Color32::TRANSPARENT), // Note: a stroke of 1.0 (or less) can look bad on low-dpi-screens
+            style: LineStyle::Solid,
             stems: None,
         }
     }
@@ -39,10 +43,53 @@ impl<'a> Points<'a> {
         self
     }
 
-    /// Set the marker's color.
+    /// Set the both marker and line 's color.
     #[inline]
     pub fn color(mut self, color: impl Into<Color32>) -> Self {
         self.color = color.into();
+        self.stroke.color = self.color.clone();
+        self
+    }
+
+    /// Set the marker's color.
+    #[inline]
+    pub fn marker_color(mut self, color: impl Into<Color32>) -> Self {
+        self.color = color.into();
+        self
+    }
+
+    /// Set the line's color.
+    #[inline]
+    pub fn line_color(mut self, color: impl Into<Color32>) -> Self {
+        self.stroke.color = color.into();
+        self
+    }
+
+    /// Toggle line between points
+    #[inline]
+    pub fn line(mut self, shown: bool) -> Self {
+        self.line = shown;
+        self
+    }
+
+    /// Add a stroke to the line
+    #[inline]
+    pub fn line_stroke(mut self, stroke: impl Into<Stroke>) -> Self {
+        self.stroke = stroke.into();
+        self
+    }
+
+    /// Stroke width. A high value means the plot thickens.
+    #[inline]
+    pub fn line_width(mut self, width: impl Into<f32>) -> Self {
+        self.stroke.width = width.into();
+        self
+    }
+
+    /// Set the line's style. Default is `LineStyle::Solid`.
+    #[inline]
+    pub fn line_style(mut self, style: LineStyle) -> Self {
+        self.style = style;
         self
     }
 
@@ -129,6 +176,15 @@ pub struct Points<'a> {
     /// The maximum extent of the marker from its center.
     pub(crate) radius: f32,
 
+    /// Draw line between points
+    pub(super) line: bool,
+
+    /// Color of the line (if drawn)
+    pub(super) stroke: Stroke,
+
+    /// Style of the line (if drawn)
+    pub(super) style: LineStyle,
+
     pub(crate) stems: Option<f32>,
 }
 
@@ -145,12 +201,16 @@ impl PlotItem for Points<'_> {
             color,
             filled,
             radius,
+            line,
+            stroke,
+            style,
             stems,
             ..
         } = self;
 
         let mut radius = *radius;
 
+        let line_stroke = *stroke;
         let stroke_size = radius / 5.0;
 
         let default_stroke = Stroke::new(stroke_size, *color);
@@ -245,6 +305,14 @@ impl PlotItem for Points<'_> {
                     }
                 }
             });
+        if *line {
+            let values_tf: Vec<_> = series
+                .points()
+                .iter()
+                .map(|v| transform.position_from_point(v))
+                .collect();
+            style.style_line(values_tf, line_stroke.into(), base.highlight, shapes);
+        }
     }
 
     fn initialize(&mut self, x_range: RangeInclusive<f64>) {
