@@ -41,3 +41,4 @@ TODO
 # kittest snapshots:
 **/*.diff.png
 **/*.old.png
+.ipynb_checkpoints
