@@ -52,10 +52,10 @@ ahash = { version = "0.8.12", default-features = false, features = [
 ] }
 assertables = "9.8.2"
 document-features = "0.2.12"
-eframe = { git = "https://github.com/jsalort/egui", rev = "dc9d6a2ff20c8e617e81216032a3ee77ba5fb8b5", default-features = false }
-egui = { git = "https://github.com/jsalort/egui", rev = "dc9d6a2ff20c8e617e81216032a3ee77ba5fb8b5", default-features = false }
-egui_kittest = { git = "https://github.com/jsalort/egui", rev = "dc9d6a2ff20c8e617e81216032a3ee77ba5fb8b5", default-features = false }
-emath = { git = "https://github.com/jsalort/egui", rev = "dc9d6a2ff20c8e617e81216032a3ee77ba5fb8b5", default-features = false }
+eframe = { git = "https://github.com/jsalort/egui", rev = "c2674aaac8bcd964aa1aaad2e9883b0e56aaa8be", default-features = false }
+egui = { git = "https://github.com/jsalort/egui", rev = "c2674aaac8bcd964aa1aaad2e9883b0e56aaa8be", default-features = false }
+egui_kittest = { git = "https://github.com/jsalort/egui", rev = "c2674aaac8bcd964aa1aaad2e9883b0e56aaa8be", default-features = false }
+emath = { git = "https://github.com/jsalort/egui", rev = "c2674aaac8bcd964aa1aaad2e9883b0e56aaa8be", default-features = false }
 env_logger = { version = "0.11.8", default-features = false, features = [
     "auto-color",
     "humantime",
