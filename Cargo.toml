@@ -11,7 +11,7 @@ members = [
 [workspace.package]
 edition = "2024"
 license = "MIT OR Apache-2.0"
-rust-version = "1.92"
+rust-version = "1.94"
 version = "0.35.0"
 
 
@@ -52,10 +52,10 @@ ahash = { version = "0.8.12", default-features = false, features = [
 ] }
 assertables = "9.8.2"
 document-features = "0.2.12"
-eframe = { git = "https://github.com/jsalort/egui", rev = "3159ae2fe8f1d7021713828071070166e213597d", default-features = false }
-egui = { git = "https://github.com/jsalort/egui", rev = "3159ae2fe8f1d7021713828071070166e213597d", default-features = false }
-egui_kittest = { git = "https://github.com/jsalort/egui", rev = "3159ae2fe8f1d7021713828071070166e213597d", default-features = false }
-emath = { git = "https://github.com/jsalort/egui", rev = "3159ae2fe8f1d7021713828071070166e213597d", default-features = false }
+eframe = { git = "ssh://git@mirror.internal/home/git/jsalort/egui", rev = "77e43d2c77a4c434c5a53ecef459d462560df342", default-features = false }
+egui = { git = "ssh://git@mirror.internal/home/git/jsalort/egui", rev = "77e43d2c77a4c434c5a53ecef459d462560df342", default-features = false }
+egui_kittest = { git = "ssh://git@mirror.internal/home/git/jsalort/egui", rev = "77e43d2c77a4c434c5a53ecef459d462560df342", default-features = false }
+emath = { git = "ssh://git@mirror.internal/home/git/jsalort/egui", rev = "77e43d2c77a4c434c5a53ecef459d462560df342", default-features = false }
 env_logger = { version = "0.11.8", default-features = false, features = [
     "auto-color",
     "humantime",
