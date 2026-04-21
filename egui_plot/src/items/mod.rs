@@ -1681,7 +1681,7 @@ fn add_rulers_and_text(
     let font_id = TextStyle::Body.resolve(plot.ui.style());
 
     let corner_value = elem.corner_value();
-    plot.ui.fonts(|f| {
+    plot.ui.fonts_mut(|f| {
         shapes.push(Shape::text(
             f,
             plot.transform.position_from_point(&corner_value) + vec2(3.0, -2.0),
@@ -1739,7 +1739,7 @@ pub(super) fn rulers_at_value(
     };
 
     let font_id = TextStyle::Body.resolve(plot.ui.style());
-    plot.ui.fonts(|f| {
+    plot.ui.fonts_mut(|f| {
         shapes.push(Shape::text(
             f,
             pointer + vec2(3.0, -2.0),
