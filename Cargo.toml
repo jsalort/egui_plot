@@ -26,10 +26,10 @@ ahash = { version = "0.8.12", default-features = false, features = [
     "std",
 ] }
 document-features = "0.2.10"
-eframe = { git = "ssh://git@clara.physique.ens-lyon.fr/home/git/jsalort/egui", rev = "27c9bfccda21b1b839d1d0cba01d21ef019da18f", default-features = false }
+eframe = { git = "https://github.com/jsalort/egui", rev = "27c9bfccda21b1b839d1d0cba01d21ef019da18f", default-features = false }
 #egui = { version = "0.31.0", default-features = false }
-egui = { git = "ssh://git@clara.physique.ens-lyon.fr/home/git/jsalort/egui", rev = "27c9bfccda21b1b839d1d0cba01d21ef019da18f", default-features = false }
-egui_kittest = { git = "ssh://git@clara.physique.ens-lyon.fr/home/git/jsalort/egui", rev = "27c9bfccda21b1b839d1d0cba01d21ef019da18f", default-features = false }
+egui = { git = "https://github.com/jsalort/egui", rev = "27c9bfccda21b1b839d1d0cba01d21ef019da18f", default-features = false }
+egui_kittest = { git = "https://github.com/jsalort/egui", rev = "27c9bfccda21b1b839d1d0cba01d21ef019da18f", default-features = false }
 emath = { version = "0.31.0", default-features = false }
 env_logger = { version = "0.11.6", default-features = false, features = [
     "auto-color",
